@@ -11,7 +11,7 @@ module App =
     open App.Pages
     let init () =
         ({ CurrentPage = Home
-           CurrentTheme = Theme.Dark
+           CurrentTheme = Theme.Light
            IsMenuOpen = false
            ScrollPosition = 0}, Cmd.none)
 
@@ -19,6 +19,8 @@ module App =
         match msg with
         | SetTheme theme -> ({ model with CurrentTheme = theme }, Cmd.none)
         | NavigateTo page -> ({ model with CurrentPage = page }, Cmd.none)
+        | ToggleMenu -> ({ model with IsMenuOpen = not model.IsMenuOpen }, Cmd.none)
+        | UpdateScrollPosition position -> ({ model with ScrollPosition = position }, Cmd.none)
 
     [<ReactComponent>]
     let Router () =
@@ -27,12 +29,12 @@ module App =
         let renderPage (model: Model) (dispatch: Msg -> unit) =
             match model.CurrentPage with
             | Home -> Pages.Home.Page dispatch
-            // | About -> Html.text "About page coming soon"
-            // | Experience -> Html.text "Experience page coming soon"
-            // | Projects -> Html.text "Projects page coming soon"
-            // | Skills -> Html.text "Skills page coming soon"
-            // | Blog -> Html.text "Blog page coming soon"
-            // | Contact -> Html.text "Contact page coming soon"
+            | About -> Html.text "About page coming soon"
+            | Experience -> Html.text "Experience page coming soon"
+            | Projects -> Html.text "Projects page coming soon"
+            | Skills -> Html.text "Skills page coming soon"
+            | Blog -> Html.text "Blog page coming soon"
+            | Contact -> Html.text "Contact page coming soon"
                 
         // Subscribe to URL changes
         React.useEffectOnce(fun () -> 

@@ -204,19 +204,21 @@ module Layouts =
                     prop.children [
                         Html.p [
                             prop.text "© 2025 Luis FX - Built with "
-                            // Html.a [
-                            //     prop.className "link link-primary"
-                            //     prop.href "https://fable.io"
-                            //     prop.target "_blank"
-                            //     prop.text "Fable"
-                            // ]
-                            // Html.text " and "
-                            // Html.a [
-                            //     prop.className "link link-primary" 
-                            //     prop.href "https://feliz-tools.github.io"
-                            //     prop.target "_blank"
-                            //     prop.text "Feliz"
-                            // ]
+                            prop.children [
+                                Html.a [
+                                    prop.className "link link-primary"
+                                    prop.href "https://fable.io"
+                                    prop.target "_blank"
+                                    prop.text "Fable"
+                                ]
+                                Html.text " and "
+                                Html.a [
+                                    prop.className "link link-primary" 
+                                    prop.href "https://feliz-tools.github.io"
+                                    prop.target "_blank"
+                                    prop.text "Feliz"
+                                ]
+                            ]
                         ]
                     ]
                 ]
