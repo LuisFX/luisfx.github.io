@@ -1,6 +1,9 @@
+@import "tailwindcss";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@plugin "daisyui";
 
 @layer base {
   html {
@@ -9,7 +12,7 @@
   
   body {
     @apply min-h-screen;
-    font-family: 'Inter', sans-serif;
+    /* font-family: 'Inter', sans-serif; */
   }
 }
 
