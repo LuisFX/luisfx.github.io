@@ -17,7 +17,7 @@ module Layouts =
             prop.href (Router.format(State.toUrl page))
             prop.onClick (fun e -> 
                 e.preventDefault()
-                // Router.navigate(Page.toUrl page)
+                Router.navigate(State.toUrl page |> List.toArray)
             )
             prop.text label
         ]

@@ -50,9 +50,68 @@ module Home =
             prop.className (sprintf "btn %s btn-lg min-w-[150px]" colorClass)
             prop.text text
         ]
+
+    let mockCoding = [
+        """
+// F# Skill
+type Msg =
+ | NavigateTo of string
+
+let update msg state =
+  match msg with
+  | NavigateTo href -> state, Cmd.navigatePath(href)
+
+let goToUrl (dispatch: Msg -> unit) (href: string) (e: MouseEvent) =
+    // disable full page refresh
+    e.preventDefault()
+    // dispatch msg
+    dispatch (NavigateTo href)
+
+let render state dispatch =
+  let href = Router.format("some-sub-path")
+  Html.a [
+    prop.text "Click me"
+    prop.href href
+    prop.onClick (goToUrl dispatch href)
+  ]        
+        """;
+
+        """
+// Swift Skill
+let update msg state =
+  match msg with
+  | NavigateTo href -> state, Cmd.navigatePath(href)
+
+let goToUrl (dispatch: Msg -> unit) (href: string) (e: MouseEvent) =
+""";
+    """
+// C# Skill
+let update msg state =
+  match msg with
+  | NavigateTo href -> state, Cmd.navigatePath(href)
+
+let goToUrl (dispatch: Msg -> unit) (href: string) (e: MouseEvent) =
+""";
+    ]
     
     [<ReactComponent>]
     let Page (dispatch: App.State.Msg -> unit) =
+        let currentCodingFragment, setCurrentCodingFragment = React.useState mockCoding.[0]
+
+        // Setup a timer to change the coding fragment every 5 seconds
+        React.useEffect(
+            (fun () ->
+                let timer = System.Timers.Timer(5000.0)
+                timer.Elapsed.Add(fun _ ->
+                    // Get a random index
+                    let randomIndex = System.Random().Next(mockCoding.Length)
+                    setCurrentCodingFragment mockCoding.[randomIndex]
+                )
+                timer.Start()
+            )
+            , [| |]
+        )   
+
         Html.div [
             prop.className "min-h-screen"
             prop.children [
@@ -132,7 +191,7 @@ module Home =
                                                     prop.children [
                                                         Html.pre [
                                                             prop.className "animate-typing overflow-hidden whitespace-pre"
-                                                            prop.text """module Portfolio"""
+                                                            prop.text currentCodingFragment
                                                         ]
                                                     ]
                                                 ]

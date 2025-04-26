@@ -35,19 +35,14 @@ module App =
             | Experience -> Html.text "Experience page coming soon"
             | Skills -> Html.text "Skills page coming soon"
             | Blog -> Html.text "Blog page coming soon"
-                
-        // Handle initial URL
-        React.useEffectOnce(fun () -> 
-            let initialPage = 
-                Router.currentUrl()
-                |> State.fromUrl 
 
-            dispatch (NavigateTo initialPage)
-            React.createDisposable(fun () -> ())
-        )
-        
-        // Main component
-        Layouts.MainLayout model dispatch (renderPage model dispatch)
+        // Create a router with a URL handler
+        React.router [
+            router.onUrlChanged (State.fromUrl >> NavigateTo >> dispatch)
+            router.children [
+                Layouts.MainLayout model dispatch (renderPage model dispatch)
+            ]
+        ]
         
     [<ReactComponent>]
     let App () = Router() 
