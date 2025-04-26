@@ -29,28 +29,24 @@ module App =
         let renderPage (model: Model) (dispatch: Msg -> unit) =
             match model.CurrentPage with
             | Home -> Pages.Home.Page dispatch
-            | About -> Html.text "About page coming soon"
+            | About -> Pages.About.Page dispatch
+            | Projects -> Pages.Projects.Page dispatch
+            | Contact -> Pages.Contact.Page dispatch
             | Experience -> Html.text "Experience page coming soon"
-            | Projects -> Html.text "Projects page coming soon"
             | Skills -> Html.text "Skills page coming soon"
             | Blog -> Html.text "Blog page coming soon"
-            | Contact -> Html.text "Contact page coming soon"
                 
-        // Subscribe to URL changes
+        // Handle initial URL
         React.useEffectOnce(fun () -> 
-            let urlSubscription = 
+            let initialPage = 
                 Router.currentUrl()
-                |> App.State.fromUrl
-                |> NavigateTo
-                |> dispatch
-                
-            // Router.onUrlChanged (Page.fromUrl >> NavigateTo >> dispatch)
-            
-            // Cleanup (not really needed in this case since we want the router for the lifetime of the app)
+                |> State.fromUrl 
+
+            dispatch (NavigateTo initialPage)
             React.createDisposable(fun () -> ())
         )
         
-        // Render
+        // Main component
         Layouts.MainLayout model dispatch (renderPage model dispatch)
         
     [<ReactComponent>]

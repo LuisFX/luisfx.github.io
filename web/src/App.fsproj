@@ -10,6 +10,9 @@
         <Compile Include="State.fs" />
         <Compile Include="Layouts.fs" />
         <Compile Include="Pages/Home.fs" />
+        <Compile Include="Pages/About.fs" />
+        <Compile Include="Pages/Projects.fs" />
+        <Compile Include="Pages/Contact.fs" />
         <Compile Include="App.fs" />
         <Compile Include="Components.fs" />
         <Compile Include="Main.fs" />
