@@ -1,6 +1,9 @@
 @import "tailwindcss";
-@plugin "daisyui";
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@plugin "daisyui";
 
 @layer base {
   html {
@@ -26,7 +29,7 @@
   }
   
   .nav-link-active {
-    @apply nav-link bg-primary/10 text-primary;
+    @apply bg-primary/10 text-primary px-3 py-2 rounded-md transition-all duration-200;
   }
   
   .section-container {
