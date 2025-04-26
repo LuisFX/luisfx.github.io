@@ -1,9 +1,11 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { resolve } from 'path'
+import tailwindcss from '@tailwindcss/vite'
+
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
   root: "./src",
   base: "./",
   build: {
@@ -16,6 +18,13 @@ export default defineConfig({
         main: resolve(__dirname, 'src/index.html'),
       },
     },
+  },
+  css:  {
+    postcss: {
+      plugins: [
+        tailwindcss,
+      ]
+    }
   },
   server: {
     port: 3000,
