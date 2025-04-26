@@ -47,8 +47,4 @@ module App =
         
     [<ReactComponent>]
     let App () =
-        // Router()
-        Daisy.button.button [
-            button.primary
-            prop.text "This is button"
-        ] 
+        Router()
