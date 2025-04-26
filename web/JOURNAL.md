@@ -40,4 +40,13 @@
 - **Routing Issue (FIXED)**: The application's routing was not working because the MainLayout component was not properly wrapped with the React.router component. Fixed by implementing the router with the correct syntax for Feliz.Router 4.0.0:
   - Changed implementation to use `React.router` instead of custom wrapper
   - Used proper router.onUrlChanged and router.children properties
-  - Used function composition `(State.fromUrl >> NavigateTo >> dispatch)` for the URL change handler 
+  - Used function composition `(State.fromUrl >> NavigateTo >> dispatch)` for the URL change handler
+
+- **Typing Animation (FIXED)**: The code typing animation in the Home page was only working on first load and not resetting when the fragment changed. Fixed by:
+  - Replaced System.Timers.Timer with React-friendly Browser.Dom.window.setTimeout
+  - Added an isAnimating state to toggle the animation class
+  - Implemented a three-step animation cycle:
+    1. Remove animation class (setIsAnimating false)
+    2. Change text content after a short delay
+    3. Re-add animation class to restart the animation (setIsAnimating true)
+  - Made the fragment transition smooth and continuous by adding dependency tracking for currentFragmentIndex 

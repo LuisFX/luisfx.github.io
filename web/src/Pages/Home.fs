@@ -2,6 +2,7 @@ namespace App.Pages
 
 open Feliz
 open App
+open Browser.Dom
 
 module Home =
     let skillCategory (title: string) (skills: string list) =
@@ -51,67 +52,31 @@ module Home =
             prop.text text
         ]
 
-    let mockCoding = [
-        """
-// F# Skill
-type Msg =
- | NavigateTo of string
-
-let update msg state =
-  match msg with
-  | NavigateTo href -> state, Cmd.navigatePath(href)
-
-let goToUrl (dispatch: Msg -> unit) (href: string) (e: MouseEvent) =
-    // disable full page refresh
-    e.preventDefault()
-    // dispatch msg
-    dispatch (NavigateTo href)
-
-let render state dispatch =
-  let href = Router.format("some-sub-path")
-  Html.a [
-    prop.text "Click me"
-    prop.href href
-    prop.onClick (goToUrl dispatch href)
-  ]        
-        """;
-
-        """
-// Swift Skill
-let update msg state =
-  match msg with
-  | NavigateTo href -> state, Cmd.navigatePath(href)
-
-let goToUrl (dispatch: Msg -> unit) (href: string) (e: MouseEvent) =
-""";
-    """
-// C# Skill
-let update msg state =
-  match msg with
-  | NavigateTo href -> state, Cmd.navigatePath(href)
-
-let goToUrl (dispatch: Msg -> unit) (href: string) (e: MouseEvent) =
-""";
+    // Language code fragments with witty titles
+    let codeFragments = [
+        // F#
+        "How about we get F#nctional?",
+        "let (|Success|Failure|) result = match result with | Ok x -> Success x | Error e -> Failure e"
+        
+        // C#
+        "C# what I did there?",
+        "var results = users.Where(u => u.IsActive).Select(u => u.Name).ToList();"
+        
+        // TypeScript
+        "TS the difference!",
+        "const sum = <T extends number[]>(...values: T): number => values.reduce((acc, val) => acc + val, 0);"
+        
+        // Kotlin
+        "Kotlin a lot of features!",
+        "val capitalize = { str: String -> str.split(' ').joinToString(\" \") { it.capitalize() } }"
+        
+        // Swift
+        "Be Swift about it!",
+        "let sorted = names.sorted { $0.count > $1.count || ($0.count == $1.count && $0 < $1) }"
     ]
     
     [<ReactComponent>]
     let Page (dispatch: App.State.Msg -> unit) =
-        let currentCodingFragment, setCurrentCodingFragment = React.useState mockCoding.[0]
-
-        // Setup a timer to change the coding fragment every 5 seconds
-        React.useEffect(
-            (fun () ->
-                let timer = System.Timers.Timer(5000.0)
-                timer.Elapsed.Add(fun _ ->
-                    // Get a random index
-                    let randomIndex = System.Random().Next(mockCoding.Length)
-                    setCurrentCodingFragment mockCoding.[randomIndex]
-                )
-                timer.Start()
-            )
-            , [| |]
-        )   
-
         Html.div [
             prop.className "min-h-screen"
             prop.children [
@@ -185,13 +150,61 @@ let goToUrl (dispatch: Msg -> unit) (href: string) (e: MouseEvent) =
                                         Html.div [
                                             prop.className "hidden md:block"
                                             prop.children [
-                                                // Placeholder for animated code or tech visualization
+                                                // Animated code visualization
                                                 Html.div [
                                                     prop.className "text-white font-mono text-xs md:text-sm bg-black/20 backdrop-blur-sm p-6 rounded-lg border border-white/10 shadow-xl"
                                                     prop.children [
+                                                        let (currentFragmentIndex, setCurrentFragmentIndex) = React.useState(0)
+                                                        let (isAnimating, setIsAnimating) = React.useState(true)
+                                                        
+                                                        let currentTitle, currentCode = codeFragments.[currentFragmentIndex]
+                                                        
+                                                        // Language title with witty comment
+                                                        Html.div [
+                                                            prop.className "text-2xl md:text-3xl font-black tracking-tight text-white/90 mb-3"
+                                                            prop.text currentTitle
+                                                        ]
+                                                        
+                                                        // Set up the timer to change fragments
+                                                        React.useEffect(
+                                                            (fun () ->
+                                                                let timerId = window.setTimeout(
+                                                                    (fun () ->
+                                                                        // First remove animation
+                                                                        setIsAnimating(false)
+                                                                        
+                                                                        // Schedule the fragment change
+                                                                        window.setTimeout(
+                                                                            (fun () ->
+                                                                                let nextIndex = (currentFragmentIndex + 1) % codeFragments.Length
+                                                                                setCurrentFragmentIndex(nextIndex)
+                                                                                
+                                                                                // Reset animation after changing text
+                                                                                window.setTimeout(
+                                                                                    (fun () -> setIsAnimating(true)), 
+                                                                                    50
+                                                                                ) |> ignore
+                                                                            ),
+                                                                            100
+                                                                        ) |> ignore
+                                                                    ),
+                                                                    5000
+                                                                )
+                                                                
+                                                                // Cleanup
+                                                                React.createDisposable(fun () -> window.clearTimeout(timerId) |> ignore)
+                                                            ),
+                                                            [| box currentFragmentIndex |]
+                                                        )
+                                                        
                                                         Html.pre [
-                                                            prop.className "animate-typing overflow-hidden whitespace-pre"
-                                                            prop.text currentCodingFragment
+                                                            prop.className (
+                                                                if isAnimating then 
+                                                                    "animate-typing overflow-hidden whitespace-pre" 
+                                                                else 
+                                                                    "overflow-hidden whitespace-pre"
+                                                            )
+                                                            prop.text currentCode
                                                         ]
                                                     ]
                                                 ]
