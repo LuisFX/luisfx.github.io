@@ -5,6 +5,7 @@ open Feliz
 open Elmish
 open Feliz.Router
 open Feliz.UseElmish
+open Feliz.DaisyUI
 
 module App =
     open App.State
@@ -45,4 +46,5 @@ module App =
         ]
         
     [<ReactComponent>]
-    let App () = Router() 
+    let App () =
+        Router()

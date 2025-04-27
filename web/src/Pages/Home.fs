@@ -86,11 +86,11 @@ module Home =
                     prop.children [
                         // Overlay text
                         Html.div [
-                            prop.className "absolute inset-0 flex items-center justify-center pointer-events-none opacity-10"
+                            prop.className "absolute inset-0 flex items-center justify-center pointer-events-none"
                             prop.children [
                                 Html.div [
-                                    prop.className "text-[15vw] font-black tracking-tighter"
-                                    prop.text "DEVELOPER"
+                                    prop.className "text-[15vw] font-black tracking-tighter hero-overlay-text"
+                                    prop.text "ENGINEERING"
                                 ]
                             ]
                         ]

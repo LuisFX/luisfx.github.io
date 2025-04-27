@@ -1,5 +1,5 @@
 # LuisFX
-## CTO at AntidoteAI | Polyglot Developer | AI Enthusiast
+## CTO at AntidoteAI | Polyglot Architect | AI Enthusiast
 
 > *Building tomorrow's tech with today's tools while sailing through the digital ocean* 🌊💻
 
@@ -7,7 +7,7 @@
 
 ### 👋 Hey there!
 
-I'm a tech-obsessed developer who loves creating solutions that make a real difference. When I'm not crafting code, you'll find me sailing the open waters or hunting down the perfect bowl of ramen! With experience spanning multiple industries and languages, I bring a unique perspective to every project.
+I'm a tech-obsessed software engineer who loves creating solutions that make a real difference. When I'm not crafting code, you'll find me sailing the open waters or hunting down the perfect bowl of ramen! With experience spanning multiple industries and languages, I bring a unique perspective to every project.
 
 ### 🚀 What I Bring to the Table
 

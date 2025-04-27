@@ -10,6 +10,11 @@
     scroll-behavior: smooth;
   }
   
+  /* Add smooth transitions to all elements for theme changes */
+  *, *::before, *::after {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, fill 0.3s ease, stroke 0.3s ease;
+  }
+  
   body {
     @apply min-h-screen;
     /* font-family: 'Inter', sans-serif; */
@@ -90,10 +95,28 @@
   @apply bg-gradient-to-r from-primary to-accent;
 }
 
+/* 
+  Animated background gradient with theme awareness
+  Light themes (light, retro): Bright colorful gradient
+  Dark themes (dark, cyberpunk, synthwave): Deep, rich, darker gradient 
+*/
 .bg-gradient-animated {
-  background: linear-gradient(-45deg, #3B82F6, #10B981, #8B5CF6, #F59E0B);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
+  transition: background 0.7s ease-in-out;
+}
+
+/* Light theme gradient */
+html[data-theme="light"] .bg-gradient-animated, 
+html[data-theme="retro"] .bg-gradient-animated {
+  background: linear-gradient(-45deg, #3B82F6, #10B981, #8B5CF6, #F59E0B);
+}
+
+/* Dark theme gradient */
+html[data-theme="dark"] .bg-gradient-animated,
+html[data-theme="cyberpunk"] .bg-gradient-animated,
+html[data-theme="synthwave"] .bg-gradient-animated {
+  background: linear-gradient(-45deg, #1d4ed8, #0d9488, #7e22ce, #b45309);
 }
 
 @keyframes gradient {
@@ -106,4 +129,16 @@
   100% {
     background-position: 0% 50%;
   }
+}
+
+/* Add theme-specific overlay text color */
+html[data-theme="light"] .hero-overlay-text,
+html[data-theme="retro"] .hero-overlay-text {
+  color: rgba(0, 0, 0, 0.07);
+}
+
+html[data-theme="dark"] .hero-overlay-text,
+html[data-theme="cyberpunk"] .hero-overlay-text,
+html[data-theme="synthwave"] .hero-overlay-text {
+  color: rgba(255, 255, 255, 0.07);
 } 

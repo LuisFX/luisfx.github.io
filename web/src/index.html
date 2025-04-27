@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en">
     <head>
-        <title>LuisFX | CTO at AntidoteAI | Polyglot Developer | AI Enthusiast</title>
+        <title>LuisFX | CTO at AntidoteAI | Polyglot Software Architect | AI Enthusiast</title>
         <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Luis FX - CTO at AntidoteAI, Polyglot Developer, and AI Enthusiast. Explore my projects, skills, and thoughts on technology.">
-        <meta name="keywords" content="F#, Developer, CTO, AI, Programming, Portfolio">
+        <meta name="description" content="Luis FX - CTO at AntidoteAI, Polyglot Software Architect, and AI Enthusiast. Explore my projects, skills, and thoughts on technology.">
+        <meta name="keywords" content="F#, Engineer, Architect, Developer, CTO, AI, Programming, Portfolio">
         <meta name="author" content="Luis FX">
         <link rel="shortcut icon" type="image/png" href="./img/favicon-32x32.png" sizes="32x32" />
         <link rel="shortcut icon" type="image/png" href="./img/favicon-16x16.png" sizes="16x16" />
@@ -13,6 +13,24 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <script>
+            // Apply the theme immediately to prevent flashing
+            (function() {
+                try {
+                    const storedTheme = localStorage.getItem('luisfx-theme') || 'light';
+                    document.documentElement.setAttribute('data-theme', storedTheme);
+                    
+                    // Also add classes for additional styling if needed
+                    if (['dark', 'cyberpunk', 'synthwave'].includes(storedTheme)) {
+                        document.documentElement.classList.add('dark-theme');
+                    } else {
+                        document.documentElement.classList.add('light-theme');
+                    }
+                } catch (e) {
+                    console.error('Error setting initial theme:', e);
+                }
+            })();
+        </script>
     </head>
     <body>
         <div id="feliz-app"></div>

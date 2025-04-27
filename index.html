@@ -1,23 +1,41 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en">
     <head>
-        <title>LuisFX | CTO at AntidoteAI | Polyglot Developer | AI Enthusiast</title>
+        <title>LuisFX | CTO at AntidoteAI | Polyglot Software Architect | AI Enthusiast</title>
         <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Luis FX - CTO at AntidoteAI, Polyglot Developer, and AI Enthusiast. Explore my projects, skills, and thoughts on technology.">
-        <meta name="keywords" content="F#, Developer, CTO, AI, Programming, Portfolio">
+        <meta name="description" content="Luis FX - CTO at AntidoteAI, Polyglot Software Architect, and AI Enthusiast. Explore my projects, skills, and thoughts on technology.">
+        <meta name="keywords" content="F#, Engineer, Architect, Developer, CTO, AI, Programming, Portfolio">
         <meta name="author" content="Luis FX">
-        <link rel="shortcut icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADuUlEQVRYhe1WS2wbVRQ97814hthTx3LcfETVOCJNS38kCooMCgtKhQAp0BZUpKqqCgIWLFggFgghFVhQxIIFIoIiPlKp+C0QYoEUihBKUOI2qapabsivQx27xHbs2I6dxB6/eY9FREQSh3jsqmXB2Yz03r3nnPfunTsD/A+LIM4mO4hEbxaftGmA19cqeVpbeSo8AwgBzonzZX8frWv2gsqCOOpqlfYne2x3dfuIWlvDs9EYTIOVa4CUE2Tbf+hhe8+7p/mcHjET+pRyz5GnqLNhe6lYYRqLTB/qL46fP8/+GPTz1LROFLvGs7E5kY3PlW2AbGl0q/c9d9LW+sCDUBxOQm2G7O06WO7J1iL99t4WHr16fe26XCpYvf/5Y/bD7/WCytSMT4yBLeXp1h37KxU34xMBkZtNl9pbdwN3PHLqJam+bV9h+NwXbPKXQbDCcj0lRXYcP3tG7Xz62bJUhQC7cWUw3/9BrzFy7tsVnn8zQLR6jciKnacj8VLBaveLJx1Hez/fQBGCGTkWGvYXx/r6jMD33/GZoL6Zz1UlELl4TgC5jYJ58toqQmEW57Mf9zxBAMozf0bM2Lhu5Q1YZ2AzsPDlgBCcEUKX86issKnfBlFcMKzw/BObzoFVMBbytp0P+SR38w4AIITIwliIMn1g+NYYAGDGxoNq14lnCJVkAJDbDjxKXdvr+FxIF9lYCoCwwlfWIFoLW8fRx7TjZ78hNlVbWRQCfCERMWeuBnlS13kqHDZT09M8+vsoC18KbtQblgwQrV5rfn3kstuMR2tdbpejoWWvwwaYAlhigGECJgeYAIocKLDl9XT0+ujMm3s6UFxc1yuWmlDk4ouSUqNsaezsbtSAJg3YpgGEAOk8kCkA8waQNZafGQHkGSC7vbtlb1c7m/z14lpOq181bqYjUYs5f2eWLIFFA4RKrjsbrWqz2akgC10MlNqzVALICk33f3RGbdm9R67f6qGuGjvZda+PCCJnDGC+IHgq8NMPmVQynUnGopl4JJyNjI8tTg74yxrFlcD1TnKW2t0eADBTodHMKe8+ALzc/Kr/bEiNa+UWjUtff2VFvHoDskoJiAYAgrN8YeDDT6xSVGWAOps8IEQGAGP4y894KmT5DanOgLvZCwCCFfNLfW+droijGgNSw927AKBw4dP3eeJa5NYb2NbewfPziaUf36jo9FXD+eqVIfXAKy/cFnHi8Didr40OQVKsDbObBaXz2ONy20FftTwV94AQLMEmfvbfNgNt5MZIteL/CfwFXV2RDfbLNMUAAAAASUVORK5CYII=" sizes="32x32" />
-        <link rel="shortcut icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAByUlEQVQ4jaVSvU9TURw9974v2lLKa2utadMISgJJCbFxYJA42cGoiRNOQjSBOLmROPQPcGBoIiE4uGgI/wAbMRB1czEQrDbR+EGp2pZ+vva9vnuvCxhKnsXUM/7uOeeenN8P+E+QkwOqx0L84GtBvjCVEJZhC8swiKTKbH8nA8F4VwN6ZmRYHb91Q5u8PwPFNSAFzl88euNGqWBntzZ5Ze97cz2VEs1yHQDoEUGdvHdHu/JgXrRqdXvv3e5xMQBQtz+ojF5LQjAurEarM4GkyCCUwjYtAJDOxUd9j7bfC8G59Xb1Ba/mc/an12/aHzZewmoYpzcjKfLg44OinuaM+oeiXamOU8E5r//KqfGbt7XE9DTxBPzUEwygz+uGWavDNk3HEo8nGF/8kh2LDoaifpe71ARKLaDYBPbLLePzQiQijFIZAGRHA9bmkqr1+/pd7qgXUCnQ5kDVBAgEIMSfdTonIIT6Jq4nw2fD4cjd5ZWGxez8s9mZSvFHvvZtN8NqPwvdeukw0tO87Zlde/5vgpN6bziopxmTIpfif+M4b+EQcuxygqguxXz15GlPCbSrD+eoHuvhDg5BZJWx3PbHnn4HgKXlFXoa5zeSwaslIQkUoQAAAABJRU5ErkJggg==" sizes="16x16" />
-        
+        <link rel="shortcut icon" type="image/png" href="./assets/favicon-32x32-DFTeg61h.png" sizes="32x32" />
+        <link rel="shortcut icon" type="image/png" href="./assets/favicon-16x16-BejqRXb6.png" sizes="16x16" />
+
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-      <script type="module" crossorigin src="./assets/main-2abc0f0f.js"></script>
-      <link rel="stylesheet" href="./assets/index-130088dd.css">
+        <script>
+            // Apply the theme immediately to prevent flashing
+            (function() {
+                try {
+                    const storedTheme = localStorage.getItem('luisfx-theme') || 'light';
+                    document.documentElement.setAttribute('data-theme', storedTheme);
+                    
+                    // Also add classes for additional styling if needed
+                    if (['dark', 'cyberpunk', 'synthwave'].includes(storedTheme)) {
+                        document.documentElement.classList.add('dark-theme');
+                    } else {
+                        document.documentElement.classList.add('light-theme');
+                    }
+                } catch (e) {
+                    console.error('Error setting initial theme:', e);
+                }
+            })();
+        </script>
+      <script type="module" crossorigin src="./assets/main-CqaKzPq_.js"></script>
+      <link rel="stylesheet" crossorigin href="./assets/main-B5u8E4UK.css">
     </head>
     <body>
         <div id="feliz-app"></div>
-        
+
     </body>
 </html>
