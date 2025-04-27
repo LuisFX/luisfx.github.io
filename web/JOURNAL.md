@@ -49,4 +49,4 @@
     1. Remove animation class (setIsAnimating false)
     2. Change text content after a short delay
     3. Re-add animation class to restart the animation (setIsAnimating true)
-  - Made the fragment transition smooth and continuous by adding dependency tracking for currentFragmentIndex 
+  - Made the fragment transition smooth and continuous by adding dependency tracking for currentFragmentIndex

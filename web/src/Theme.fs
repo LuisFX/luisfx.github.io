@@ -29,7 +29,7 @@ module Theme =
         
     let themeKey = "luisfx-theme"
     
-    let defaultTheme = Light
+    let defaultTheme = Dark
     
     let getStoredTheme() =
         let theme = 
@@ -176,41 +176,42 @@ module Theme =
                                 ]
                             ]
                             
-                            Html.button [
-                                prop.className (sprintf "btn btn-sm btn-block justify-start %s" (if currentTheme = Cyberpunk then "btn-primary" else "btn-ghost"))
-                                prop.onClick (fun _ -> handleThemeChange Cyberpunk)
-                                prop.children [
-                                    Html.span [
-                                        prop.className "mr-2"
-                                        prop.text "🤖"
-                                    ]
-                                    Html.span "Cyberpunk"
-                                ]
-                            ]
+                            // DISABLED THESE THEMES FOR NOW
+                            // Html.button [
+                            //     prop.className (sprintf "btn btn-sm btn-block justify-start %s" (if currentTheme = Cyberpunk then "btn-primary" else "btn-ghost"))
+                            //     prop.onClick (fun _ -> handleThemeChange Cyberpunk)
+                            //     prop.children [
+                            //         Html.span [
+                            //             prop.className "mr-2"
+                            //             prop.text "🤖"
+                            //         ]
+                            //         Html.span "Cyberpunk"
+                            //     ]
+                            // ]
                             
-                            Html.button [
-                                prop.className (sprintf "btn btn-sm btn-block justify-start %s" (if currentTheme = Synthwave then "btn-primary" else "btn-ghost"))
-                                prop.onClick (fun _ -> handleThemeChange Synthwave)
-                                prop.children [
-                                    Html.span [
-                                        prop.className "mr-2"
-                                        prop.text "🌆"
-                                    ]
-                                    Html.span "Synthwave"
-                                ]
-                            ]
+                            // Html.button [
+                            //     prop.className (sprintf "btn btn-sm btn-block justify-start %s" (if currentTheme = Synthwave then "btn-primary" else "btn-ghost"))
+                            //     prop.onClick (fun _ -> handleThemeChange Synthwave)
+                            //     prop.children [
+                            //         Html.span [
+                            //             prop.className "mr-2"
+                            //             prop.text "🌆"
+                            //         ]
+                            //         Html.span "Synthwave"
+                            //     ]
+                            // ]
                             
-                            Html.button [
-                                prop.className (sprintf "btn btn-sm btn-block justify-start %s" (if currentTheme = Retro then "btn-primary" else "btn-ghost"))
-                                prop.onClick (fun _ -> handleThemeChange Retro)
-                                prop.children [
-                                    Html.span [
-                                        prop.className "mr-2"
-                                        prop.text "👾"
-                                    ]
-                                    Html.span "Retro"
-                                ]
-                            ]
+                            // Html.button [
+                            //     prop.className (sprintf "btn btn-sm btn-block justify-start %s" (if currentTheme = Retro then "btn-primary" else "btn-ghost"))
+                            //     prop.onClick (fun _ -> handleThemeChange Retro)
+                            //     prop.children [
+                            //         Html.span [
+                            //             prop.className "mr-2"
+                            //             prop.text "👾"
+                            //         ]
+                            //         Html.span "Retro"
+                            //     ]
+                            // ]
                         ]
                     ]
             ]

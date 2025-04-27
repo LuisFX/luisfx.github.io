@@ -76,12 +76,12 @@ module About =
                                             prop.children [
                                                 Html.h2 [
                                                     prop.className "text-4xl font-bold"
-                                                    prop.text "CTO & POLYGLOT DEVELOPER"
+                                                    prop.text "CTO & POLYGLOT ARCHITECT"
                                                 ]
                                                 
                                                 Html.p [
                                                     prop.className "text-xl opacity-80 leading-relaxed"
-                                                    prop.text "I'm a tech-obsessed developer who loves creating solutions that make a real difference. When I'm not crafting code, you'll find me sailing the open waters or hunting down the perfect bowl of ramen!"
+                                                    prop.text "I'm a tech-obsessed software engineer who loves creating solutions that make a real difference. When I'm not crafting code, you'll find me sailing the open waters or hunting down the perfect bowl of ramen!"
                                                 ]
                                                 
                                                 Html.div [
