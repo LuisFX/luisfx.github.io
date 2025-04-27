@@ -28,43 +28,49 @@ class Stage
 	constructor()
 	{
 		// container
-		
 		this.container = document.getElementById('game');
 		
-		// renderer
+		if (!this.container) {
+			console.error('Game container not found');
+			return;
+		}
 		
+		// Get container dimensions for proper sizing
+		const containerRect = this.container.getBoundingClientRect();
+		const containerWidth = containerRect.width;
+		const containerHeight = containerRect.height;
+		
+		// renderer
 		this.renderer = new THREE.WebGLRenderer({
 			antialias: true,
 			alpha: false
 		});
 		
-		this.renderer.setSize(window.innerWidth, window.innerHeight);
+		this.renderer.setSize(containerWidth, containerHeight);
 		this.renderer.setClearColor('#D0CBC7', 1);
-		this.container.appendChild( this.renderer.domElement );
+		this.container.appendChild(this.renderer.domElement);
 		
 		// scene
-
 		this.scene = new THREE.Scene();
 
 		// camera
-
-		let aspect = window.innerWidth / window.innerHeight;
+		let aspect = containerWidth / containerHeight;
 		let d = 20;
-		this.camera = new THREE.OrthographicCamera( - d * aspect, d * aspect, d, - d, -100, 1000);
+		this.camera = new THREE.OrthographicCamera(-d * aspect, d * aspect, d, -d, -100, 1000);
 		this.camera.position.x = 2;
 		this.camera.position.y = 2; 
 		this.camera.position.z = 2; 
 		this.camera.lookAt(new THREE.Vector3(0, 0, 0));
 		
 		//light
-
 		this.light = new THREE.DirectionalLight(0xffffff, 0.5);
 		this.light.position.set(0, 499, 0);
 		this.scene.add(this.light);
 
-		this.softLight = new THREE.AmbientLight( 0xffffff, 0.4 );
-		this.scene.add(this.softLight)
+		this.softLight = new THREE.AmbientLight(0xffffff, 0.4);
+		this.scene.add(this.softLight);
 		
+		// Handle window resize
 		window.addEventListener('resize', () => this.onResize());
 		this.onResize();
 	}
@@ -77,12 +83,22 @@ class Stage
 	
 	onResize()
 	{
+		if (!this.container) return;
+		
+		// Get container dimensions for responsive sizing
+		const containerRect = this.container.getBoundingClientRect();
+		const containerWidth = containerRect.width;
+		const containerHeight = containerRect.height;
+		
 		let viewSize = 30;
-		this.renderer.setSize(window.innerWidth, window.innerHeight);
-		this.camera.left = window.innerWidth / - viewSize;
-		this.camera.right = window.innerWidth / viewSize;
-		this.camera.top = window.innerHeight / viewSize;
-		this.camera.bottom = window.innerHeight / - viewSize;
+		this.renderer.setSize(containerWidth, containerHeight);
+		
+		// Update camera aspect ratio and frustum
+		let aspect = containerWidth / containerHeight;
+		this.camera.left = -viewSize * aspect;
+		this.camera.right = viewSize * aspect;
+		this.camera.top = viewSize;
+		this.camera.bottom = -viewSize;
 		this.camera.updateProjectionMatrix();
 	}
 	
@@ -464,7 +480,12 @@ class Game
 	}
 }
 
-// Initialize the game when the script loads
-document.addEventListener('DOMContentLoaded', () => {
-  new Game();
-});
+// Make Game class available globally for initialization from the React component
+window['Game'] = Game;
+
+// Initialize the game when the script loads, but only if not being imported
+if (document.readyState === 'complete') {
+  if (!window['_towerBlocksImported']) {
+    new Game();
+  }
+}

@@ -30,13 +30,20 @@ let Toys () =
             match activeGame with
             | Some "TowerBlocks" -> 
                 Html.div [
-                    prop.className "w-full max-w-5xl mx-auto bg-base-200 rounded-xl shadow-lg overflow-hidden transition-all duration-500 ease-in-out transform"
+                    prop.className "w-full mx-auto bg-base-200 rounded-xl shadow-lg overflow-hidden transition-all duration-500 ease-in-out"
+                    prop.style [
+                        style.height 80
+                        style.maxWidth 900
+                        style.position.relative
+                        style.custom("height", "80vh")
+                        style.custom("maxWidth", "900px")
+                    ]
                     prop.children [
                         Html.div [
-                            prop.className "relative"
+                            prop.className "absolute top-4 right-4 z-50"
                             prop.children [
                                 Html.button [
-                                    prop.className "absolute top-4 right-4 btn btn-circle btn-sm btn-ghost z-50"
+                                    prop.className "btn btn-circle btn-sm bg-white/30 hover:bg-white/50 backdrop-blur-sm"
                                     prop.onClick (fun _ -> setActiveGame None)
                                     prop.children [
                                         Html.i [
@@ -44,12 +51,15 @@ let Toys () =
                                         ]
                                     ]
                                 ]
-                                Html.div [
-                                    prop.className "w-full h-[80vh]" 
-                                    prop.children [
-                                        TowerBlocks()
-                                    ]
-                                ]
+                            ]
+                        ]
+                        Html.div [
+                            prop.className "w-full h-full"
+                            prop.style [
+                                style.custom("height", "100%")
+                            ]
+                            prop.children [
+                                TowerBlocks()
                             ]
                         ]
                     ]
