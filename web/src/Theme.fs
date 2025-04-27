@@ -53,7 +53,7 @@ module Theme =
         
         // Force re-render of styles
         let style = document.createElement("style")
-        style.textContent = ":root { }" // Empty style to force a redraw
+        style.textContent = ":root { }" |> ignore // Empty style to force a redraw
         document.head.appendChild(style) |> ignore
         
         // Delay for 1ms and then remove the style

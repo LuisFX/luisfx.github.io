@@ -1,11 +1,17 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import { resolve } from 'path'
+import mdx from '@mdx-js/rollup'
 import tailwindcss from '@tailwindcss/vite'
+import { defineConfig } from 'vite'
+import { resolve } from 'path'
+import react from '@vitejs/plugin-react'
+
 
 
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    react({include: /\.(jsx|js|mdx|md|tsx|ts)$/}),
+    tailwindcss(),
+    mdx(/* jsxImportSource: …, otherOptions… */)
+  ],
   root: "./src",
   base: "./",
   build: {

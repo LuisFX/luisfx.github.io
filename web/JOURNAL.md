@@ -50,3 +50,39 @@
     2. Change text content after a short delay
     3. Re-add animation class to restart the animation (setIsAnimating true)
   - Made the fragment transition smooth and continuous by adding dependency tracking for currentFragmentIndex
+
+## Blog System Implementation Plan
+
+### Blog Architecture & Structure
+- **Content Storage**: Store MDX files in `/BlogPosts` directory organized by year
+- **Metadata Management**: Create a `metadata.json` to track all blog posts with frontmatter info
+- **GitHub Integration**: Fetch blog content directly from GitHub repository
+- **Rendering Pipeline**: Process MDX files through mdx-js/mdx with appropriate plugins
+
+### Technical Requirements
+- **F# Bindings**: Create or use existing Fable bindings for:
+  - MDX processing libraries
+  - React Markdown components
+  - Code syntax highlighting
+- **State Management**: Track blog state (loading, error, current post) in Elmish model
+- **Routing**: Implement blog-specific routes (list view, post view, tag filtering)
+  
+### UI Components To Build
+- **BlogList**: Card-based overview of all posts with filtering
+- **BlogPost**: Single post view with styling for MDX elements
+- **BlogTags**: Tag filtering system with search capabilities
+- **TableOfContents**: Auto-generated navigation for longer posts
+- **CodeBlock**: Syntax highlighted code blocks with copy functionality
+
+### Implementation Phases
+1. **Foundation** (Blog page skeleton, routing, data models)
+2. **MDX Processing** (F# bindings, MDX rendering pipeline)
+3. **UI Components** (Lists, post views, navigation elements)
+4. **Advanced Features** (Search, tag filtering, code highlighting)
+5. **SEO & Performance** (Metadata optimization, image loading)
+  
+### Styling & Design
+- **Visual Consistency**: Maintain existing site design language
+- **Typography**: Enhanced typography for long-form content
+- **Code Blocks**: Themed syntax highlighting matching site theme
+- **Responsive Design**: Optimize reading experience across devices

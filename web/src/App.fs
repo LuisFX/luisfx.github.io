@@ -35,7 +35,7 @@ module App =
             | Contact -> Pages.Contact.Page dispatch
             | Experience -> Html.text "Experience page coming soon"
             | Skills -> Html.text "Skills page coming soon"
-            | Blog -> Html.text "Blog page coming soon"
+            | Blog -> Pages.Blog.Page dispatch
 
         // Create a router with a URL handler
         React.router [
