@@ -21,7 +21,12 @@ const calculateReadingTime = (post: BlogPost): number => {
   
   // If content is available, use it for more accurate reading time
   if (post.content) {
-    const words = post.content.trim().split(/\s+/).length;
+    // Remove frontmatter section and code blocks before counting words
+    const cleanContent = post.content
+      .replace(/^---[\s\S]*?---\s*/m, '') // Remove frontmatter
+      .replace(/```[\s\S]*?```/g, '');    // Remove code blocks
+      
+    const words = cleanContent.trim().split(/\s+/).length;
     return Math.ceil(words / wordsPerMinute);
   }
   

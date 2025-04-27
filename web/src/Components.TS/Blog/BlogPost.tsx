@@ -34,7 +34,9 @@ const BlogPostComponent: React.FC<BlogPostProps> = ({ slug, onBack }) => {
         
         // Generate table of contents if content is available
         if (postData.content) {
-          const toc = generateTableOfContents(postData.content);
+          // Remove frontmatter section from content before generating TOC
+          const contentWithoutFrontmatter = postData.content.replace(/^---[\s\S]*?---\s*/m, '');
+          const toc = generateTableOfContents(contentWithoutFrontmatter);
           setTableOfContents(toc);
         }
         
@@ -108,7 +110,9 @@ const BlogPostComponent: React.FC<BlogPostProps> = ({ slug, onBack }) => {
     );
   }
   
-  const readingTime = calculateReadingTime(post.content);
+  // Remove frontmatter section from content for display
+  const contentWithoutFrontmatter = post.content.replace(/^---[\s\S]*?---\s*/m, '');
+  const readingTime = calculateReadingTime(contentWithoutFrontmatter);
   
   return (
     <div className="container mx-auto px-4 py-12 max-w-7xl">
@@ -179,7 +183,7 @@ const BlogPostComponent: React.FC<BlogPostProps> = ({ slug, onBack }) => {
               remarkPlugins={[remarkGfm]}
               components={MarkdownComponents}
             >
-              {post.content}
+              {contentWithoutFrontmatter}
             </ReactMarkdown>
           </div>
         </div>
