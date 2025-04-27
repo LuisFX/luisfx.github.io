@@ -33,7 +33,7 @@ module App =
             | About -> Pages.About.Page dispatch
             | Projects -> Pages.Projects.Page dispatch
             | Contact -> Pages.Contact.Page dispatch
-            | Experience -> Html.text "Experience page coming soon"
+            | Experience -> Test.Test()
             | Skills -> Html.text "Skills page coming soon"
             | Blog -> Pages.Blog.Page dispatch
 

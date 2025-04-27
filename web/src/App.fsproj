@@ -3,6 +3,9 @@
         <TargetFramework>net7.0</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
+        <Compile Include="./Components.TS/Test.fs" />
+    </ItemGroup>
+    <ItemGroup>
         <None Include="index.html" />
         <None Include="styles.css" />
         <Compile Include="Extensions.fs" />
