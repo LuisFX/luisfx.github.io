@@ -5,6 +5,7 @@
     <ItemGroup>
         <Compile Include="./Components.TS/Test.fs" />
         <Compile Include="./Components.TS/TowerBlocks.fs" />
+        <Compile Include="./Components.TS/Blog/Blog.fs" />
     </ItemGroup>
     <ItemGroup>
         <None Include="index.html" />

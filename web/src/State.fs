@@ -10,6 +10,7 @@ type Page =
     | Projects
     | Skills
     | Blog
+    | BlogPost
     | Toys
     | Contact
 
@@ -33,6 +34,7 @@ module State =
         | Projects -> [ "projects" ]
         | Skills -> [ "skills" ]
         | Blog -> [ "blog" ]
+        | BlogPost -> [ "blog" ]
         | Toys -> [ "toys" ]
         | Contact -> [ "contact" ]
         
@@ -43,6 +45,7 @@ module State =
         | Projects -> "Projects" 
         | Skills -> "Skills"
         | Blog -> "Blog"
+        | BlogPost -> "Blog Post"
         | Toys -> "Toys"
         | Contact -> "Contact"
 
@@ -51,10 +54,12 @@ module State =
         CurrentTheme: Theme.ThemeType
         IsMenuOpen: bool
         ScrollPosition: float
+        BlogSlug: string option
     }
 
     type Msg =
         | NavigateTo of Page
+        | NavigateToBlogPost of string
         | SetTheme of Theme.ThemeType
         | ToggleMenu
         | UpdateScrollPosition of float
@@ -67,6 +72,7 @@ module State =
             CurrentTheme = initialTheme
             IsMenuOpen = false
             ScrollPosition = 0.0
+            BlogSlug = None
         }, Cmd.none
 
     let update (msg: Msg) (model: Model) =
@@ -76,6 +82,15 @@ module State =
             { model with 
                 CurrentPage = page 
                 IsMenuOpen = false
+                BlogSlug = None
+            }, Cmd.none
+            
+        | NavigateToBlogPost slug ->
+            window.scrollTo(0.0, 0.0)
+            { model with 
+                CurrentPage = BlogPost
+                IsMenuOpen = false
+                BlogSlug = Some slug
             }, Cmd.none
             
         | SetTheme theme ->

@@ -1,0 +1,28 @@
+{
+  "posts": [
+    {
+      "slug": "getting-started-with-fsharp",
+      "frontmatter": {
+        "title": "Getting Started with F# and Fable",
+        "date": "2023-12-15",
+        "author": "Luis FX",
+        "tags": ["F#", "Fable", "Web Development"],
+        "excerpt": "Learn how to set up your first F# web project with Fable and create interactive web applications with a functional approach.",
+        "coverImage": "/images/blog/fsharp-fable.jpg"
+      },
+      "content": "# Getting Started with F# and Fable\n\nF# and Fable provide a powerful combination for building web applications with a functional-first approach.\n\n## Why F# for Web Development?\n\nF# offers several advantages for web development:\n\n- **Type Safety**: Catch errors at compile time\n- **Immutability**: Predictable code with fewer bugs\n- **Expressive Syntax**: Write concise, readable code\n- **Functional Patterns**: Leverage functional programming paradigms\n\n## Setting Up Your First Project\n\nLet's walk through setting up a basic F# and Fable project:\n\n```fsharp\n// Program.fs\nopen Browser.Dom\n\nlet hello name =\n    printfn \"Hello, %s!\" name\n\nhello \"F# Developer\"\n```\n\n## Using Feliz for React Components\n\nFeliz provides type-safe React bindings for F#:\n\n```fsharp\nopen Feliz\n\nlet counter () =\n    let (count, setCount) = React.useState(0)\n    \n    Html.div [\n        Html.h1 [\n            prop.text (sprintf \"Count: %d\" count)\n        ]\n        Html.button [\n            prop.text \"Increment\"\n            prop.onClick (fun _ -> setCount(count + 1))\n        ]\n    ]\n```\n\n## Next Steps\n\nNow that you have a basic understanding of F# and Fable, you can start building more complex applications.\n\nCheck out these resources:\n- [F# Documentation](https://docs.microsoft.com/en-us/dotnet/fsharp/)\n- [Fable Documentation](https://fable.io/docs/)\n- [Feliz Documentation](https://zaid-ajaj.github.io/Feliz/)"
+    },
+    {
+      "slug": "functional-react-patterns",
+      "frontmatter": {
+        "title": "Functional React Patterns with Feliz",
+        "date": "2024-02-10",
+        "author": "Luis FX",
+        "tags": ["F#", "React", "Feliz", "Patterns"],
+        "excerpt": "Discover how to leverage functional programming patterns in your React applications using Feliz.",
+        "coverImage": "/images/blog/functional-react.jpg"
+      },
+      "content": "# Functional React Patterns with Feliz\n\nFeliz makes it easy to build React applications with F#, leveraging functional programming concepts for cleaner, more maintainable code.\n\n## Component Composition\n\nOne of the strengths of functional programming is composition. In Feliz, we can compose components elegantly:\n\n```fsharp\nlet header title =\n    Html.header [\n        Html.h1 [\n            prop.className \"page-title\"\n            prop.text title\n        ]\n    ]\n\nlet footer copyright =\n    Html.footer [\n        Html.p [\n            prop.className \"copyright\"\n            prop.text copyright\n        ]\n    ]\n\nlet page title content copyright =\n    Html.div [\n        prop.className \"page\"\n        prop.children [\n            header title\n            Html.main [\n                prop.className \"content\"\n                prop.children content\n            ]\n            footer copyright\n        ]\n    ]\n```\n\n## React Hooks with F#\n\nFeliz provides idiomatic F# wrappers for React hooks:\n\n```fsharp\n[<ReactComponent>]\nlet Counter() =\n    let (count, setCount) = React.useState(0)\n    \n    // useEffect example\n    React.useEffect(fun () ->\n        document.title <- sprintf \"Count: %d\" count\n        None // cleanup function\n    , [| box count |])\n    \n    Html.div [\n        Html.p [\n            prop.text (sprintf \"Current count: %d\" count)\n        ]\n        Html.button [\n            prop.text \"Increment\"\n            prop.onClick (fun _ -> setCount(count + 1))\n        ]\n    ]\n```\n\n## Custom Hooks\n\nCreating custom hooks in F# is straightforward:\n\n```fsharp\n// A custom hook for window size\nlet useWindowSize() =\n    let (size, setSize) = React.useState({ Width = window.innerWidth; Height = window.innerHeight })\n    \n    React.useEffect(fun () ->\n        let handleResize _ =\n            setSize({ Width = window.innerWidth; Height = window.innerHeight })\n        \n        window.addEventListener(\"resize\", handleResize)\n        \n        // Cleanup\n        Some (fun () -> window.removeEventListener(\"resize\", handleResize))\n    , [| |])\n    \n    size\n```\n\n## Conclusion\n\nFeliz and F# offer a powerful functional approach to building React applications. By embracing functional patterns, you can create more maintainable, composable, and type-safe React applications."
+    }
+  ]
+}
