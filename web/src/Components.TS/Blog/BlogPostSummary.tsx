@@ -41,58 +41,62 @@ const BlogPostSummary: React.FC<BlogPostSummaryProps> = ({ post, onClick }) => {
   
   return (
     <div 
-      className="card bg-base-200 shadow-xl hover:shadow-2xl transition-all duration-300 h-full cursor-pointer overflow-hidden"
+      className="blog-card group bg-base-200 rounded-xl shadow-lg hover:shadow-2xl overflow-hidden flex flex-col cursor-pointer h-full"
       onClick={onClick}
     >
-      {post.frontmatter.coverImage && (
-        <figure className="h-48 overflow-hidden">
+      <div className="image-hover h-56 overflow-hidden">
+        {post.frontmatter.coverImage ? (
           <img 
             src={post.frontmatter.coverImage} 
             alt={post.frontmatter.title}
-            className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+            className="w-full h-full object-cover transition-all duration-700"
           />
-        </figure>
-      )}
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-primary/50 to-primary/20 flex items-center justify-center">
+            <span className="text-5xl font-bold text-white/50">F#</span>
+          </div>
+        )}
+      </div>
       
-      <div className="card-body">
-        <div className="flex gap-2 mb-2">
+      <div className="p-6 flex-grow flex flex-col">
+        <div className="flex flex-wrap gap-2 mb-3">
           {post.frontmatter.tags.slice(0, 3).map((tag, index) => (
-            <span key={index} className="badge badge-primary badge-sm">
+            <span key={index} className="badge badge-sm badge-primary bg-opacity-80 text-xs font-medium">
               {tag}
             </span>
           ))}
           {post.frontmatter.tags.length > 3 && (
-            <span className="badge badge-ghost badge-sm">+{post.frontmatter.tags.length - 3}</span>
+            <span className="badge badge-sm badge-ghost text-xs">+{post.frontmatter.tags.length - 3}</span>
           )}
         </div>
         
-        <h2 className="card-title text-2xl font-bold hover:text-primary transition-colors">
+        <h2 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors line-clamp-2">
           {post.frontmatter.title}
         </h2>
         
-        <div className="flex items-center gap-2 text-sm opacity-70 mt-1">
-          <span>{formatDate(post.frontmatter.date)}</span>
-          <span className="text-xs">•</span>
-          <span>{readingTime} min read</span>
-        </div>
-        
-        <p className="mt-3 line-clamp-3 text-opacity-80 text-base-content">
+        <p className="text-base-content/80 text-sm mb-4 line-clamp-3 flex-grow">
           {post.frontmatter.excerpt}
         </p>
         
-        <div className="card-actions justify-between items-center mt-4">
-          <div className="flex items-center">
+        <div className="flex items-center justify-between mt-auto pt-4 border-t border-base-300">
+          <div className="flex items-center gap-3">
             <div className="avatar">
-              <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-content font-bold">
+              <div className="w-8 h-8 rounded-full bg-primary/90 flex items-center justify-center text-primary-content font-semibold text-sm">
                 {post.frontmatter.author.charAt(0)}
               </div>
             </div>
-            <span className="ml-2 text-sm">{post.frontmatter.author}</span>
+            <div>
+              <span className="text-xs opacity-80 block">{formatDate(post.frontmatter.date)}</span>
+              <span className="text-xs opacity-60">{readingTime} min read</span>
+            </div>
           </div>
           
-          <button className="btn btn-sm btn-primary">
+          <div className="text-primary text-xs font-semibold flex items-center">
             Read More
-          </button>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
         </div>
       </div>
     </div>
