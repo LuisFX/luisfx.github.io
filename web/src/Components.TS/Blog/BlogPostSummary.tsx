@@ -15,15 +15,24 @@ const formatDate = (dateString: string): string => {
   });
 };
 
-// Calculate estimated reading time
-const calculateReadingTime = (content: string): number => {
+// Calculate estimated reading time - uses excerpt if content is not available
+const calculateReadingTime = (post: BlogPost): number => {
   const wordsPerMinute = 200;
-  const words = content.trim().split(/\s+/).length;
-  return Math.ceil(words / wordsPerMinute);
+  
+  // If content is available, use it for more accurate reading time
+  if (post.content) {
+    const words = post.content.trim().split(/\s+/).length;
+    return Math.ceil(words / wordsPerMinute);
+  }
+  
+  // Fallback to using excerpt and an average article length estimate
+  const excerptWords = post.frontmatter.excerpt.trim().split(/\s+/).length;
+  // Assume average blog post is about 1000 words if we only have excerpt
+  return Math.ceil(Math.max(excerptWords * 5, 1000) / wordsPerMinute);
 };
 
 const BlogPostSummary: React.FC<BlogPostSummaryProps> = ({ post, onClick }) => {
-  const readingTime = calculateReadingTime(post.content);
+  const readingTime = calculateReadingTime(post);
   
   return (
     <div 

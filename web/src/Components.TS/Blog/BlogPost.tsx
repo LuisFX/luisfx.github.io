@@ -22,8 +22,8 @@ const BlogPostComponent: React.FC<BlogPostProps> = ({ slug, onBack }) => {
       try {
         setIsLoading(true);
         
-        // Get post by slug
-        const postData = getPostBySlug(slug);
+        // Get post by slug (now async)
+        const postData = await getPostBySlug(slug);
         
         if (!postData) {
           setError(`Blog post '${slug}' not found`);
@@ -32,9 +32,11 @@ const BlogPostComponent: React.FC<BlogPostProps> = ({ slug, onBack }) => {
         
         setPost(postData);
         
-        // Generate table of contents
-        const toc = generateTableOfContents(postData.content);
-        setTableOfContents(toc);
+        // Generate table of contents if content is available
+        if (postData.content) {
+          const toc = generateTableOfContents(postData.content);
+          setTableOfContents(toc);
+        }
         
         setError(null);
       } catch (err) {
@@ -78,6 +80,23 @@ const BlogPostComponent: React.FC<BlogPostProps> = ({ slug, onBack }) => {
       <div className="container mx-auto px-4 py-8 max-w-4xl text-center">
         <div className="alert alert-error">
           <span>{error || 'Blog post not found'}</span>
+        </div>
+        <button 
+          className="btn btn-primary mt-4"
+          onClick={onBack}
+        >
+          Back to Blog
+        </button>
+      </div>
+    );
+  }
+  
+  // If content is missing, show an error
+  if (!post.content) {
+    return (
+      <div className="container mx-auto px-4 py-8 max-w-4xl text-center">
+        <div className="alert alert-error">
+          <span>Failed to load content for "{post.frontmatter.title}"</span>
         </div>
         <button 
           className="btn btn-primary mt-4"

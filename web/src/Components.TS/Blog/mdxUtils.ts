@@ -12,8 +12,9 @@ export interface BlogPostFrontmatter {
 
 export interface BlogPost {
   slug: string;
+  filename: string;
   frontmatter: BlogPostFrontmatter;
-  content: string;
+  content?: string;
 }
 
 interface Manifest {
@@ -32,17 +33,29 @@ export const getPostSlugs = (): string[] => {
 };
 
 // Get a single post by slug
-export const getPostBySlug = (slug: string): BlogPost | null => {
+export const getPostBySlug = async (slug: string): Promise<BlogPost | null> => {
   try {
     const manifest = manifestData as Manifest;
-    const post = manifest.posts.find(post => post.slug === slug);
+    const postMetadata = manifest.posts.find(post => post.slug === slug);
     
-    if (!post) {
+    if (!postMetadata) {
       console.error(`Post with slug "${slug}" not found in manifest`);
       return null;
     }
     
-    return post;
+    // Dynamically load the MDX file content
+    try {
+      const postContent = await import(`../../../blog/posts/${postMetadata.filename}`);
+      
+      // Return post with content
+      return {
+        ...postMetadata,
+        content: postContent.default
+      };
+    } catch (error) {
+      console.error(`Error loading MDX file for "${slug}":`, error);
+      return postMetadata; // Return just the metadata if content loading fails
+    }
   } catch (error) {
     console.error(`Error getting post with slug "${slug}":`, error);
     return null;

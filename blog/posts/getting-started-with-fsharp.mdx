@@ -1,0 +1,65 @@
+---
+title: "Getting Started with F# and Fable"
+date: "2023-12-15"
+author: "Luis FX"
+tags: ["F#", "Fable", "Web Development"]
+excerpt: "Learn how to set up your first F# web project with Fable and create interactive web applications with a functional approach."
+coverImage: "/images/blog/fsharp-fable.jpg"
+---
+
+# Getting Started with F# and Fable
+
+F# and Fable provide a powerful combination for building web applications with a functional-first approach.
+
+## Why F# for Web Development?
+
+F# offers several advantages for web development:
+
+- **Type Safety**: Catch errors at compile time
+- **Immutability**: Predictable code with fewer bugs
+- **Expressive Syntax**: Write concise, readable code
+- **Functional Patterns**: Leverage functional programming paradigms
+
+## Setting Up Your First Project
+
+Let's walk through setting up a basic F# and Fable project:
+
+```fsharp
+// Program.fs
+open Browser.Dom
+
+let hello name =
+    printfn "Hello, %s!" name
+
+hello "F# Developer"
+```
+
+## Using Feliz for React Components
+
+Feliz provides type-safe React bindings for F#:
+
+```fsharp
+open Feliz
+
+let counter () =
+    let (count, setCount) = React.useState(0)
+    
+    Html.div [
+        Html.h1 [
+            prop.text (sprintf "Count: %d" count)
+        ]
+        Html.button [
+            prop.text "Increment"
+            prop.onClick (fun _ -> setCount(count + 1))
+        ]
+    ]
+```
+
+## Next Steps
+
+Now that you have a basic understanding of F# and Fable, you can start building more complex applications.
+
+Check out these resources:
+- [F# Documentation](https://docs.microsoft.com/en-us/dotnet/fsharp/)
+- [Fable Documentation](https://fable.io/docs/)
+- [Feliz Documentation](https://zaid-ajaj.github.io/Feliz/) 
