@@ -34,8 +34,9 @@ module App =
             | Projects -> Pages.Projects.Page dispatch
             | Contact -> Pages.Contact.Page dispatch
             | Experience -> Test.Test()
-            | Skills -> Html.text "Skills page coming soon"
+            | Skills -> SampleMDX.SampleMDX()
             | Blog -> Pages.Blog.Page dispatch
+            | Toys -> Pages.Toys.Toys()
 
         // Create a router with a URL handler
         React.router [

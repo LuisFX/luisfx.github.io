@@ -94,10 +94,49 @@ Create a router setup with routes for all planned sections:
 - `Feliz.DaisyUI` (if available)
 - `Fable.SimpleJson`
 
-## First Week Milestones
-- [ ] Complete styling setup
-- [ ] Implement basic layout
-- [ ] Setup routing
-- [ ] Basic state management
-- [ ] Skeleton pages for all sections
-- [ ] Configure GitHub Pages deployment 
+Based on your code review, here's an updated task list and plan for your portfolio website:
+
+1. **Core Structure**
+   - ✅ Set up basic Fable/F# project with Elmish architecture
+   - ✅ Implement navigation and routing
+   - ✅ Create theme switching functionality
+
+2. **Page Implementation**
+   - ✅ Home page structure
+   - ✅ About page
+   - ✅ Experience section
+   - ✅ Projects showcase
+   - ✅ Skills display
+   - ✅ Blog section with list and detail views
+   - ✅ Contact page
+
+3. **Blog Functionality**
+   - ✅ Create blog post card components
+   - ✅ Implement blog post detail view
+   - ⬜ Replace mock data with actual blog content
+   - ⬜ Add markdown/MDX rendering for blog posts
+   - ⬜ Implement pagination for blog list
+
+4. **Toys**
+   - ⬜ Create beautifully crafted and fun Toys page
+   - ⬜ Add beautiful colors and transitions. This page will really highlight our web/ux/ui/desing capabilities.
+   - ✅ Add a 'toy', which is a game called 'TowerBlocks', whose typescript and css code is located: D:\code\luisfx\luisfx.github.io\web\src\Components.TS\Test.tsx/.css
+      - Our application stack fully supports TypeScript with .ts and tsx files interop already. Look at the Test.tsx/Test.fs (fs is fable/feliz bindings for the interop)
+      - Every .tsx file needs an accompanying .fs file for wrapping the .tsx component.
+
+4. **UI/UX Enhancements**
+   - ✅ Implement responsive design with Tailwind
+   - ✅ Add dark/light theme toggle
+   - ⬜ Improve animations and transitions
+   - ⬜ Add accessibility features
+
+5. **Deployment**
+   - ⬜ Set up GitHub Pages deployment workflow (noted that deploy.yml was deleted)
+   - ⬜ Configure custom domain
+   - ⬜ Implement CI/CD for automatic builds
+
+6. **Additional Features**
+   - ⬜ Add search functionality for blog posts
+   - ⬜ Implement comments system
+   - ⬜ Add analytics tracking
+   - ⬜ Create RSS feed for blog

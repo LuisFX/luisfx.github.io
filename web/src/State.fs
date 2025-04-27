@@ -10,6 +10,7 @@ type Page =
     | Projects
     | Skills
     | Blog
+    | Toys
     | Contact
 
 module State =
@@ -21,6 +22,7 @@ module State =
         | [ "projects" ] -> Projects
         | [ "skills" ] -> Skills
         | [ "blog" ] -> Blog
+        | [ "toys" ] -> Toys
         | [ "contact" ] -> Contact
         | _ -> Home
 
@@ -31,6 +33,7 @@ module State =
         | Projects -> [ "projects" ]
         | Skills -> [ "skills" ]
         | Blog -> [ "blog" ]
+        | Toys -> [ "toys" ]
         | Contact -> [ "contact" ]
         
     let toTitle = function
@@ -40,6 +43,7 @@ module State =
         | Projects -> "Projects" 
         | Skills -> "Skills"
         | Blog -> "Blog"
+        | Toys -> "Toys"
         | Contact -> "Contact"
 
     type Model = {

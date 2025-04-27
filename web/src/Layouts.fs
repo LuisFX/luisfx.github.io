@@ -87,6 +87,9 @@ module Layouts =
                                     NavLink Skills model.CurrentPage "Skills"
                                 ]
                                 Html.li [
+                                    NavLink Toys model.CurrentPage "Toys"
+                                ]
+                                Html.li [
                                     NavLink Blog model.CurrentPage "Blog"
                                 ]
                                 Html.li [

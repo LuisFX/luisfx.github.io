@@ -9,7 +9,7 @@ const config = {
   // …
   plugins: [
     // …
-    mdx({jsxImportSource: 'react'}
+    mdx({jsxImportSource: 'react'})
   ]
 }
 

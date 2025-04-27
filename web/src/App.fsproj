@@ -4,6 +4,7 @@
     </PropertyGroup>
     <ItemGroup>
         <Compile Include="./Components.TS/Test.fs" />
+        <Compile Include="./Components.TS/TowerBlocks.fs" />
     </ItemGroup>
     <ItemGroup>
         <None Include="index.html" />
@@ -12,11 +13,13 @@
         <Compile Include="Theme.fs" />
         <Compile Include="State.fs" />
         <Compile Include="Layouts.fs" />
+        <Compile Include="Pages/MDX/Sample.fs" />
         <Compile Include="Pages/Home.fs" />
         <Compile Include="Pages/About.fs" />
         <Compile Include="Pages/Projects.fs" />
         <Compile Include="Pages/Contact.fs" />
         <Compile Include="Pages/Blog.fs" />
+        <Compile Include="Pages/Toys.fs" />
         <Compile Include="App.fs" />
         <Compile Include="Components.fs" />
         <Compile Include="Main.fs" />
