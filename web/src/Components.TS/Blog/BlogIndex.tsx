@@ -93,10 +93,7 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onPostClick }) => {
       {/* Hero Section with Parallax */}
       <div 
         ref={parallaxRef}
-        className="relative h-[80vh] flex items-center justify-center overflow-hidden"
-        style={{
-          background: 'linear-gradient(135deg, #121212 0%, #1a1a1a 100%)'
-        }}
+        className="relative h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-animated"
       >
         {/* Scrolling Marquee Bar */}
         <div className="absolute top-0 left-0 right-0 bg-primary text-primary-content overflow-hidden py-2 whitespace-nowrap">
@@ -105,6 +102,13 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onPostClick }) => {
           </div>
           <div className="inline-block animate-marquee2">
             FRESH POSTS - LATEST NEWS & ARTICLES - FRESH POSTS - LATEST NEWS & ARTICLES - FRESH POSTS - LATEST NEWS & ARTICLES -
+          </div>
+        </div>
+        
+        {/* Overlay text - added to match home page style */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="text-[15vw] font-black tracking-tighter hero-overlay-text">
+            BLOG
           </div>
         </div>
         
@@ -132,27 +136,27 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onPostClick }) => {
           </div>
         </div>
         
-        {/* Large negative title */}
+        {/* Large title */}
         <div 
           className="relative z-10 container mx-auto px-4"
           style={{
-            transform: `translateY(${scrollY * -0.2}px)`,
+            transform: `translateY(${scrollY * -0.4}px)`,
             transition: 'transform 0.1s linear'
           }}
         >
           <h1 
-            className="text-[8rem] md:text-[12rem] lg:text-[16rem] font-black leading-none text-center text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-focus to-primary"
+            className="text-[8rem] md:text-[12rem] lg:text-[16rem] font-black text-blue-200 mix-blend-difference leading-none text-center text-transparent bg-clip-text  from-primary via-primary-focus to-primary"
             style={{ 
               WebkitTextStroke: '2px rgba(255,255,255,0.1)',
               textShadow: '0 10px 30px rgba(0,0,0,0.2)'
             }}
           >
-            BLOG
+            DEV STORIES
           </h1>
           <p 
-            className="text-xl md:text-2xl text-white text-center max-w-2xl mx-auto mt-6 opacity-80"
+            className="text-xl md:text-2xl text-white text-center max-w-2xl mx-auto mt-6 opacity-60"
             style={{
-              transform: `translateY(${scrollY * -0.1}px)`,
+              transform: `translateY(${scrollY * -0.4}px)`,
               transition: 'transform 0.1s linear'
             }}
           >
@@ -160,17 +164,16 @@ const BlogIndex: React.FC<BlogIndexProps> = ({ onPostClick }) => {
           </p>
         </div>
         
-        {/* Scroll indicator */}
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            className="h-8 w-8 text-white opacity-70" 
-            fill="none" 
-            viewBox="0 0 24 24" 
-            stroke="currentColor"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
+        {/* Scroll indicator with mouse icon (matching home page) */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+          <div className="flex flex-col items-center">
+            <span className="text-sm opacity-80 mb-2">
+              SCROLL
+            </span>
+            <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
+              <div className="w-1 h-2 bg-white rounded-full animate-pulse"></div>
+            </div>
+          </div>
         </div>
       </div>
       
