@@ -45,9 +45,9 @@ export const getPostBySlug = async (slug: string): Promise<BlogPost | null> => {
     
     // Dynamically load the MDX file content
     try {
-      // Use fetch to get the MDX content as text instead of using import
-      // This will work at runtime when the files are served from the root
-      const response = await fetch(`/blog/posts/${postMetadata.filename}`);
+      // Use fetch to get the raw MDX content - using blog/posts relative to public directory
+      // According to the vite.config.js, the public directory is at the root level in production
+      const response = await fetch(`./blog/posts/${postMetadata.filename}`);
       
       if (!response.ok) {
         throw new Error(`Failed to fetch ${postMetadata.filename}: ${response.status} ${response.statusText}`);

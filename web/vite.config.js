@@ -4,13 +4,15 @@ import { defineConfig } from 'vite'
 import { resolve } from 'path'
 import react from '@vitejs/plugin-react'
 
-
-
 export default defineConfig({
   plugins: [
     react({include: /\.(jsx|js|mdx|md|tsx|ts)$/}),
     tailwindcss(),
-    mdx(/* jsxImportSource: …, otherOptions… */)
+    mdx({
+      providerImportSource: '@mdx-js/react',
+      remarkPlugins: [],
+      rehypePlugins: []
+    })
   ],
   root: "./src",
   base: "./",
@@ -25,7 +27,7 @@ export default defineConfig({
       },
     },
   },
-  css:  {
+  css: {
     postcss: {
       plugins: [
         tailwindcss,
@@ -35,5 +37,6 @@ export default defineConfig({
   server: {
     port: 3000,
     open: true
-  }
+  },
+  assetsInclude: ['**/*.mdx']
 })

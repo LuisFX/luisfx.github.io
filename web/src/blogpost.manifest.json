@@ -23,6 +23,19 @@
         "excerpt": "Discover how to leverage functional programming patterns in your React applications using Feliz.",
         "coverImage": "/images/blog/functional-react.jpg"
       }
+    },
+    {
+      "slug": "the-state-of-game-engines-in-fsharp",
+      "filename": "the-state-of-game-engines-in-fsharp.mdx",
+      "frontmatter": {
+        "title": "The State of Game Engines in F#",
+        "date": "2024-03-20",
+        "author": "Luis FX",
+        "tags": ["F#", "Game Development", "Nu Engine"],
+        "excerpt": "Explore the current state of game engines in F# and discover the latest developments in the F# game development ecosystem.",
+        "coverImage": "/img/coastal-world-threejs-webgl-game.jpg"
+      }
+
     }
   ]
 }
